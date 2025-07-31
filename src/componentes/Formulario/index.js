@@ -5,14 +5,6 @@ import Botao from "../Botao";
 import { useState } from "react";
 
 const Formulario = (props) => {
-  const times = [
-    "Programação",
-    "Front-End",
-    "Data Sience",
-    "UX e Design",
-    "Mobile",
-    "Inovação e Gestão",
-  ];
 
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
@@ -28,6 +20,9 @@ const Formulario = (props) => {
       imagem,
       time,
     });
+    setNome('')
+    setCargo('')
+    setImagem('')
   };
 
   return (
@@ -59,7 +54,7 @@ const Formulario = (props) => {
           aoAlterado={(valor) => setTime(valor)}
           obrigatorio={true}
           label="Time"
-          itens={times}
+          itens={props.times}
         />
         <Botao>Criar Card</Botao>
       </form>
