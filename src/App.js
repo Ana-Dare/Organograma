@@ -45,6 +45,10 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState([]);
 
+  function deletarColaborador() {
+    console.log("deletando");
+  }
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador]);
   };
@@ -67,9 +71,11 @@ function App() {
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.time === time.nome
           )}
+          aoDeletar={deletarColaborador}
         />
       ))}
-      <Footer/>
+
+      <Footer />
     </div>
   );
 }
