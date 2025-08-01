@@ -1,0 +1,19 @@
+.footer {
+    background-color: #6278F7;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem;
+    align-items: center;
+    height: 10rem;
+    color: #fff;
+    box-sizing: border-box;
+}
+.img {
+    display: flex;
+    gap: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
