@@ -3,6 +3,7 @@ import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
 import Footer from "./componentes/Footer";
+import Visibilidade from "./componentes/Visibilidade";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
@@ -68,10 +69,18 @@ function App() {
   }
 
   function resolverFavorito(id) {
-    setColaboradores(colaboradores.map(colaborador =>{
-      if(colaborador.id === id) colaborador.favorito = !colaborador.favorito;
-      return colaborador
-    }))
+    setColaboradores(
+      colaboradores.map((colaborador) => {
+        if (colaborador.id === id) colaborador.favorito = !colaborador.favorito;
+        return colaborador;
+      })
+    );
+  }
+
+  const [visivel, setvisivel] = useState(true);
+
+  function alterarvisivel() {
+    setvisivel(!visivel);
   }
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
@@ -83,16 +92,22 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Formulario
-        cadastrarTime={cadastrarTime}
-        times={times.map((time) => time.nome)}
-        aoColaboradorCadastrado={(colaborador) =>
-          aoNovoColaboradorAdicionado(colaborador)
-        }
-      />
+      {visivel && (
+        <Formulario
+          cadastrarTime={cadastrarTime}
+          times={times.map((time) => time.nome)}
+          aoColaboradorCadastrado={(colaborador) =>
+            aoNovoColaboradorAdicionado(colaborador)
+          }
+        />
+      )}
+      <Visibilidade
+        alterarvisivel={alterarvisivel}
+        visivel={visivel}
+      ></Visibilidade>
       {times.map((time) => (
         <Time
-        aoFavoritar={resolverFavorito}
+          aoFavoritar={resolverFavorito}
           key={time.nome}
           nome={time.nome}
           mudarCor={mudarCorTime}
@@ -104,7 +119,6 @@ function App() {
           aoDeletar={deletarColaborador}
         />
       ))}
-
       <Footer />
     </div>
   );
