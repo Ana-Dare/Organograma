@@ -93,18 +93,18 @@ function App() {
     <div className="App">
       <Banner />
       {visivel && (
-        <Formulario
-          cadastrarTime={cadastrarTime}
-          times={times.map((time) => time.nome)}
-          aoColaboradorCadastrado={(colaborador) =>
-            aoNovoColaboradorAdicionado(colaborador)
-          }
-        />
-      )}
+      <Formulario
+        cadastrarTime={cadastrarTime}
+        times={times.map((time) => time.nome)}
+        aoColaboradorCadastrado={(colaborador) =>
+          aoNovoColaboradorAdicionado(colaborador)
+        }
+      />
+       )}
       <Visibilidade
-        alterarvisivel={alterarvisivel}
-        visivel={visivel}
-      ></Visibilidade>
+      alterarvisivel={alterarvisivel}
+      visivel={visivel}>
+      </Visibilidade>
       {times.map((time) => (
         <Time
           aoFavoritar={resolverFavorito}
