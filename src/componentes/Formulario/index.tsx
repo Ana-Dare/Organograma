@@ -3,9 +3,16 @@ import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
 import { useState } from "react";
+import {NovoColaborador,
+} from "../../compartilhado/interfaces/IColaborador";
 
+interface FormularioProps {
+  aoColaboradorCadastrado: (colaborador: NovoColaborador) => void;
+  times: string[];
+  cadastrarTime: (time: { nome: string; cor: string }) => void;
+}
 
-const Formulario = (props) => {
+const Formulario = (props: FormularioProps) => {
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -13,7 +20,7 @@ const Formulario = (props) => {
   const [nomeTime, setNomeTime] = useState("");
   const [corTime, setCorTime] = useState("");
 
-  const aoSalvar = (evento) => {
+  const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault();
     props.aoColaboradorCadastrado({
       nome,
@@ -29,7 +36,11 @@ const Formulario = (props) => {
 
   return (
     <section className="formulario-conatiner">
-      <form className="formulario" onSubmit={aoSalvar} style={{visibility: "visible"}}>
+      <form
+        className="formulario"
+        onSubmit={aoSalvar}
+        style={{ visibility: "visible" }}
+      >
         <h2>Preencha os dados para criar o card de colaborador</h2>
         <Campo
           type="text"
@@ -92,6 +103,5 @@ const Formulario = (props) => {
       </form>
     </section>
   );
-  
 };
 export default Formulario;

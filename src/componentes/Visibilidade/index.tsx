@@ -2,7 +2,12 @@ import Formulario from "../Formulario";
 import "./visibilidade.css";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-const Visibilidade = (props) => {
+interface VisibilidadeProps {
+  alterarvisivel: () => void
+  visivel: boolean
+}
+
+const Visibilidade = (props: VisibilidadeProps) => {
   return (
     <>
       <button className="visibilidade" onClick={props.alterarvisivel}>
