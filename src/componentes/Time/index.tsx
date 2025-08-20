@@ -37,6 +37,7 @@ const Time = (props: TimeProps) => {
               aoDeletar={props.aoDeletar}
               aoFavoritar={props.aoFavoritar}
               favorito={colaborador.favorito}
+              data={colaborador.data}
             />
           );
         })}

@@ -3,8 +3,7 @@ import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
 import { useState } from "react";
-import {NovoColaborador,
-} from "../../compartilhado/interfaces/IColaborador";
+import { NovoColaborador } from "../../compartilhado/interfaces/IColaborador";
 
 interface FormularioProps {
   aoColaboradorCadastrado: (colaborador: NovoColaborador) => void;
@@ -19,6 +18,7 @@ const Formulario = (props: FormularioProps) => {
   const [time, setTime] = useState("");
   const [nomeTime, setNomeTime] = useState("");
   const [corTime, setCorTime] = useState("");
+  const [data, setData] = useState("");
 
   const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault();
@@ -27,11 +27,13 @@ const Formulario = (props: FormularioProps) => {
       cargo,
       imagem,
       time,
+      data
     });
     setNome("");
     setCargo("");
     setImagem("");
     setTime("");
+    setData("")
   };
 
   return (
@@ -64,6 +66,13 @@ const Formulario = (props: FormularioProps) => {
           placeholder="Digite o endereço da imagem"
           valor={imagem}
           aoAlterado={(valor) => setImagem(valor)}
+        />
+        <Campo
+          type="date"
+          label="Data de entrada no time"
+          placeholder=""
+          valor={data}
+          aoAlterado={(valor) => setData(valor)}
         />
         <ListaSuspensa
           type="text"

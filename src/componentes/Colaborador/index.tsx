@@ -8,6 +8,7 @@ export interface ColaboradorProps {
   corDeFundo: string;
   id: string;
   favorito: boolean;
+  data: string;
   aoDeletar: (id: string) => void;
   aoFavoritar: (id: string) => void;
 }
@@ -21,6 +22,7 @@ const Colaborador = ({
   id,
   aoFavoritar,
   favorito,
+  data
 }: ColaboradorProps) => {
   function favoritar() {
     aoFavoritar(id);
@@ -44,6 +46,7 @@ const Colaborador = ({
       <div className="rodape">
         <h4>{nome}</h4>
         <h5>{cargo}</h5>
+        <h5>{new Date(data).toLocaleDateString()}</h5>
         <div className="favoritar">
           {favorito ? (
             <IoMdHeart {...propsFavorito} color="#FF0000" />
